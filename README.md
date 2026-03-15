@@ -1,5 +1,4 @@
 # dis8925-2026-1
-
 Formulación de Proyectos. Dictado por Héctor Novoa.
 
 la clase es todos los lunes a las 10:05-10:10. Hasta las 12:50.

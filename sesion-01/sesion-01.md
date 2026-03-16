@@ -67,8 +67,6 @@ en este curso nos centraremos en las etapas 1 y 2.
 - ¿cuándo comenzará el proyecto?
 - identificación de alternativas
 
-
-
 ### conceptos relevantes
 
 - EVITDA: la ganancia que te queda después de haber pagado todo(impuestos, etc).

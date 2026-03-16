@@ -3,9 +3,13 @@ Formulación de Proyectos. Dictado por Héctor Novoa.
 
 la clase es todos los lunes a las 10:05-10:10. Hasta las 12:50.
 
+pausa es a las 11:20
+
 sala 301-ss
 
 "curso profesionalizarte"
+
+Los encargos y tareas debe subirse al [drive del curos](https://drive.google.com/drive/folders/11M5NIV_UWCa5H-XRC9qxv4I4YVFn4AQK)
 
 ## objetivos del curso
 

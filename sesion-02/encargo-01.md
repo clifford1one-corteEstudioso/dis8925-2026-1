@@ -39,7 +39,7 @@ yo entinedo que antes estabamos enfocándolo mal. Queremos encontrar sectores, u
 
 Nichos:
 
-1. Existen servicios y actividades ~~enfocados a niñes~~. Cuyo potencial digital está siendo desaprovechado. Meidante el uso de RRSS y una app llamativa y cercana, podrían potenciar su demanda. Ejemplo:
+1. Existen servicios y actividades  
     - Buin zoo
     - Arcade. Ejemplo: Juegos diana
     - festivales de origen local(Olmué, chile chico, viña, etc)
@@ -51,13 +51,14 @@ Nichos:
     - trackers enfocado a renidmiento deportivo
 
 3. archivo
-    - paisaje/infraestrucutra
-    - arte urbano/grafiti
-    - fenómenos sociales
 
-1. ARCHIVO
+- paisaje/infraestrucutra
+- arte urbano/grafiti
+- fenómenos sociales
 
-La sociedad actual está cada vez más enfocada en el futuro, y en segundo lugar en el presente. Se le da importancia a la planificación, pero una vez ya pasó, elconocimiento adquirido y las experiencias vividas sen deja de lado. Pocas veces se pone atención en el pasado. 
+1. ARCHIVO visual
+
+La sociedad actual está cada vez más enfocada en el futuro, y en segundo lugar en el presente. Se le da importancia a la planificación, pero una vez ya pasó, elconocimiento adquirido y las experiencias vividas sen deja de lado. Pocas veces se pone atención en el pasado.
 
 tener presencia del cambio a traves del tiempo.
 
@@ -73,7 +74,7 @@ oportunidad: registrar a través de fotos o renders, luagres, obras, paisajes, e
 
 potencial usuario: historiadores, investigadores, nostálgicos, prooducciones audiovisuales.
 
-### tabla actores users 
+### tabla actores users
 
 | Categoría                     | Actor / Institución              | Rol / Interés en el Proyecto                                                                 |
 |-----------------------------|---------------------------------|----------------------------------------------------------------------------------------------|

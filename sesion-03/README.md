@@ -92,6 +92,8 @@ categorías de costos:
 
 ![guía en clases, tarea-03](./imgs/tarea-03.jpg)
 
+![guía en clases, tarea-03](./imgs/tarea-03-scan.jpg)
+
 Luego conversar sobre "la idea más valiosa". Queremos evaluar conceptualmente los proyectos, para determinar el tamaño del mercado. Los productos de diseño no staisfacen todas las necesidades, satisfacen necesidades específicas.
 
 Nuestro proyecto: Archivo Visual:

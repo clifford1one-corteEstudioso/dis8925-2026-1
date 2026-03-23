@@ -64,13 +64,41 @@ calificar cada cuadrante según incidencia en la categoría. Con distintos color
 ![foto de la ppt, plano cartesiano, áreas: ámbito ecnómico, ámbito social, ámbito cultural, ámbito ambiental](./imgs/foto-cuadrante.jpg)
 
 - ámbito económico: plata
-- ámbito social: personas beneficiarias, impactos que quiero generar. Enfocado en un usuario específico
+- ámbito social: personas beneficiarias, impactos que quiero generar. Enfocado en un usuario específico.
 - ámbito cultural: grado de pertinencia. También asociado al **impacto**. educación, ámbito intelectual, de difusión, **transformación**
 - grado ambiental: reutilización de materiales
 
 por lo general, en proyecto de título, los primeros 2 ámbitos son "obligatorios", los últimos 2 no son obligatorios.
 
+## preview prox-sesion
+
+procesos básicos para determinar los costos y beneficios de un proyecto
+
+- identificación: ¿cuáles?
+- cuantificación: ¿cuántos?
+- valoración: ¿Cuánto vale?
+
+- costos reales vs costos contables
+- costos evitables vs costos sumergidos
+- costos fijos vs costos variables
+
+categorías de costos:
+
+- inversión
+- operación
+- mantenimiento
+
+### actividad en clase
+
+![guía en clases, tarea-03](./imgs/tarea-03.jpg)
+
+Luego conversar sobre "la idea más valiosa". Queremos evaluar conceptualmente los proyectos, para determinar el tamaño del mercado. Los productos de diseño no staisfacen todas las necesidades, satisfacen necesidades específicas.
+
+Nuestro proyecto: Archivo Visual:
+
+- un proyecto que busca documentar y registrar el paso del tiempo en distintos lugares, paisajes y edificios. El proyecto se vende como poseedor de cierto sello de credibilidad. Usuaries: colegios, universidades, artistas y productores audiovisuales.
+
 ## links relevantes
 
 - [Vitra](https://www.vitra.com/es-un/product)
-- []()
+- [0300TV](https://www.onarchitecture.com/offices/0300tv)

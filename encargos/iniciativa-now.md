@@ -7,7 +7,7 @@ Este es un resumen que me hizo [perplexity](www.perplexity.ai)):
 - prompt:
 
 ```txt
-Este es un pdf que mano un profe despues de la primera  clase de "formulacion de proyectos, en la carrera de diseño., quinto año. "Ayudame con un resumen que contenga titulos y subtitulso, es decir que sea mas un punteo que un texto largo. Explicame porque el profe cree que el documento es relevante , y que puedo investigar para reforzar este contenido
+Este es un pdf que mano un profe después de la primera  clase de "formulacion de proyectos, en la carrera de diseño., quinto año. "Ayudame con un resumen que contenga titulos y subtitulso, es decir que sea mas un punteo que un texto largo. Explicame porque el profe cree que el documento es relevante , y que puedo investigar para reforzar este contenido
 ```
 
 - respuesta:

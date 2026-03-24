@@ -183,4 +183,3 @@ Hacer eso es la primera parte del encargo, la otra mitad se hace en clase.
 
 - consumidor y prosumidor.
 - [prosumidor](https://es.wikipedia.org/wiki/Prosumidor): personas dispuestas a pagar por la diferenciación.
-- 

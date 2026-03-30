@@ -2,6 +2,8 @@
 
 2026-03-30
 
+anotación: revisar pp5 pa notar costos fijos, sumergidos, variables, evitables, etc.
+
 ## investigación de mercado
 
 hoy comenzamos el desarrollo de lo que será la primera solemene-01
@@ -27,6 +29,12 @@ un informe:
 - información cuantitativa
 
 Justificar desde ambos ámbitos cuál de tu 3 iniciativas sería más atractivo de ser financiado.
+
+tener en cuenta:
+
+- ¿cuáles son los beneficios de financiar este proyecto?
+- ¿cuantificación?
+- ¿costos?
 
 ## cátedra
 

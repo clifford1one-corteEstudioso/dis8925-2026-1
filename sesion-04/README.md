@@ -50,7 +50,7 @@ Hay múltiples ámbitos en los que se puede innovar. Precio, contexto temporal "
 
 ### incertidumbre
 
-cuando las probailidades de ocurrencia de un evento no están cuantificadas. Informaci´pon incompleta, inexacta, sesgada, falsa o contradictoria.
+cuando las probabilidades de ocurrencia de un evento no están cuantificadas. Informaci´pon incompleta, inexacta, sesgada, falsa o contradictoria.
 
 causas de riesgo e incertidumbre:
 
@@ -62,8 +62,75 @@ causas de riesgo e incertidumbre:
 - precios
 - demanda
 - plazos de adopción(penetración)
-. costos de insumos
+- costos de insumos
 
-## relavante
+## post-break
+
+ahora la tarea 4 es la solemne-01
+
+- se entrega el martes 6 de abril. Plazo máximo 23:59
+
+### solemne-01
+
+informe formato carta vertical.
+
+1. descripción de propuestas potenciales de proyecto.(tarea-02)
+2. evaluación cualitativa.(tarea-03). Determine la iniciativa con mayor viabilidad. Conclusiones de porqué. Definir cada proyecto en una palabra clave. Mencionar cuál es el mejor en cada atributo.
+3. estudio demanda: determinar el tamaño de mercado para cada na de las iniciativas. Concluye cuál iniciativa tiene mayor área de mercado.
+4. conclusiones poner en balance cuali y cuanti. Matriz de atributos.
+5. fuentes: integrar fuentes y bibliografía
+
+- referencia básica: [CENSO 2024](https://censo2024.ine.gob.cl/resultados-dashboard/)
+
+## continuación clase
+
+### categorías de costos
+
+1. inversión: prospectación de clientes, capacitación, máquinas y equipos, etc.
+2. operación: sueldos, arriendos, patentes, publicidades, seguros, etc.
+3. mantenimiento: repuestos, reposición, reparaciones, etc.
+
+Debemos hacer un análisis de mercado:
+
+- análisis de la oferta
+- análisis de la demanda
+- análisis de los precios
+- análisis de la comercialización
+
+### mercados viejos vs nuevos
+
+viejos:
+
+- estable
+- monopolios
+- mercado protegidos
+- poca tecnología
+- producto como lo más importante
+
+nuevos:
+
+- dinámico
+- alta competencia
+- mercado libre y global
+- alta tecnología
+- cliente como foco
+
+destrucción creativa. Las empresa quieren crear modelos que destruyan a la competencia
+
+- chile tiene una economía extremadamente abierta, a diferencia de argentina o brasil, que ponen muchos impuestos/aranceles a productos extranjeros, para potenciar el mercado nacional,.
+
+![diagram de TAM, SAM, SOM](./imgs/tam-sam-som.png)
+
+- TAM: "tamaño del universo"
+- SAM: a cuántos cliente llegaré
+- SOM: quiénes serán los compradores más probables
+
+## relevante
 
 - [crisis subprime](https://en.wikipedia.org/wiki/Subprime_mortgage_crisis)
+- [expo min](https://www.expomin.cl)
+- [tupperware](https://www.tupperware.cl/index)
+- <https://cadem.cl>
+- <https://cadem.cl>
+- <https://www.bcg.com>
+- [Hardvard Bussiness Review](https://hbr.org/subscriptions)

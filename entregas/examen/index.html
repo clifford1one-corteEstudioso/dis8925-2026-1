@@ -1,0 +1,488 @@
+<!-- Archivo Visual — Prototipo funcional (desktop) -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Archivo Visual · Prototipo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#141414; --ink:#1A1A1A; --ink-2:#202020; --ink-3:#2A2A2A;
+    --line:#333; --line-2:#3d3d3d;
+    --red:#E12B1E; --red-soft:rgba(225,43,30,.16);
+    --white:#F5F5F5; --mute:#8C8C8C; --mute-2:#5E5E5E;
+    --display:'Archivo',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --mono:'Space Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--ink);font-family:var(--body);color:var(--white);
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  button{font-family:inherit;cursor:pointer}
+  a{color:inherit}
+
+  /* ---------- NAVBAR ---------- */
+  .nav{position:sticky;top:0;z-index:40;height:72px;display:flex;align-items:center;
+    gap:32px;padding:0 32px;border-bottom:1px solid var(--line);background:var(--ink)}
+  .logo{font-family:var(--display);font-weight:800;font-size:19px;cursor:pointer;
+    letter-spacing:-.01em;white-space:nowrap;display:flex;align-items:center;gap:9px}
+  .logo .mark{width:11px;height:11px;background:var(--red);border-radius:2px;transform:rotate(45deg)}
+  .logo .vis{color:var(--mute);font-weight:500}
+  .navsearch{flex:1;height:42px;background:var(--ink-3);border:1px solid var(--line);
+    border-radius:3px;display:flex;align-items:center;gap:12px;padding:0 16px}
+  .navsearch:focus-within{border-color:var(--red)}
+  .navsearch .ico{width:15px;height:15px;flex:none;color:var(--mute)}
+  .navsearch input{flex:1;background:none;border:none;outline:none;color:var(--white);
+    font-size:14px;font-family:var(--body)}
+  .navsearch input::placeholder{color:var(--mute)}
+  .nav-links{display:flex;gap:6px}
+  .nav-links button{font-family:var(--display);font-weight:600;font-size:14px;
+    padding:9px 18px;border-radius:3px;color:var(--mute);background:none;border:none}
+  .nav-links button.on{color:var(--white);background:var(--ink-3)}
+
+  /* ---------- views ---------- */
+  .view{display:none}
+  .view.show{display:block}
+
+  /* ---------- shared photo placeholder ---------- */
+  .photo{position:relative;overflow:hidden;
+    background:radial-gradient(120% 90% at 30% 20%, #5a1410 0%, #2a0908 55%, #140404 100%)}
+  .photo::after{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(115deg, rgba(225,43,30,.10) 0 2px, transparent 2px 9px),
+      radial-gradient(60% 60% at 70% 75%, rgba(225,43,30,.35), transparent 70%)}
+  .photo[data-k="2"]{background:radial-gradient(120% 90% at 70% 30%,#16324a,#0a1620)}
+  .photo[data-k="2"]::after{background:repeating-linear-gradient(60deg,rgba(91,166,201,.12) 0 2px,transparent 2px 10px),radial-gradient(50% 60% at 30% 70%,rgba(91,166,201,.4),transparent 70%)}
+  .photo[data-k="3"]{background:radial-gradient(120% 90% at 40% 30%,#5a4410,#1a1304)}
+  .photo[data-k="3"]::after{background:repeating-linear-gradient(140deg,rgba(232,163,61,.14) 0 2px,transparent 2px 10px),radial-gradient(55% 55% at 65% 65%,rgba(232,163,61,.4),transparent 70%)}
+  .ph-ico{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:rgba(245,245,245,.22);font-size:10px;font-family:var(--mono);letter-spacing:.2em;z-index:1}
+
+  /* ---------- HOME ---------- */
+  .hero{height:520px;position:relative;display:flex;flex-direction:column;
+    justify-content:flex-end;padding:48px;cursor:pointer}
+  .hero .photo{position:absolute;inset:0}
+  .hero .grad{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(20,20,20,.2) 0%,rgba(20,20,20,.2) 40%,rgba(20,20,20,.94) 100%)}
+  .hero .inner{position:relative;max-width:760px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--red);margin-bottom:16px}
+  .hero h1{font-family:var(--display);font-weight:800;font-size:56px;line-height:1.02;
+    letter-spacing:-.02em;margin-bottom:18px}
+  .meta{font-family:var(--mono);font-size:14px;color:var(--mute);display:flex;gap:14px}
+  .meta .sep{color:var(--red)}
+
+  .section{padding:56px 48px}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;
+    margin-bottom:28px;border-bottom:1px solid var(--line);padding-bottom:16px}
+  .sec-head h2{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.01em}
+  .sec-head .count{font-family:var(--mono);font-size:13px;color:var(--mute)}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{background:var(--ink-2);border:1px solid var(--line);border-radius:4px;
+    overflow:hidden;cursor:pointer;transition:border-color .15s,transform .15s}
+  .card:hover{border-color:var(--red);transform:translateY(-2px)}
+  .card .photo{height:200px}
+  .card .body{padding:18px 18px 22px}
+  .card h3{font-family:var(--display);font-weight:600;font-size:18px;margin-bottom:10px;letter-spacing:-.01em}
+  .card .cmeta{font-family:var(--mono);font-size:12px;color:var(--mute);display:flex;gap:10px;align-items:center}
+  .card .cmeta .tag{color:var(--red)}
+
+  .wide{display:grid;grid-template-columns:420px 1fr;background:var(--ink-2);
+    border:1px solid var(--line);border-radius:4px;overflow:hidden;cursor:pointer;transition:border-color .15s}
+  .wide:hover{border-color:var(--red)}
+  .wide .photo{height:280px}
+  .wide .wbody{padding:40px;display:flex;flex-direction:column;justify-content:center}
+  .wide h3{font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:-.01em;margin:14px 0;line-height:1.1}
+  .wide p{color:var(--mute);font-size:15px;line-height:1.6;max-width:560px}
+
+  .footer{border-top:1px solid var(--line);padding:36px 48px;display:flex;
+    align-items:center;justify-content:space-between;color:var(--mute)}
+  .footer .fl{display:flex;gap:28px;font-size:14px}
+  .footer a{text-decoration:none}
+
+  /* ---------- ONBOARDING ---------- */
+  .overlay{position:fixed;inset:0;z-index:60;background:rgba(10,10,10,.8);
+    backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center}
+  .overlay.hide{display:none}
+  .modal{width:480px;background:var(--ink-2);border:1px solid var(--line-2);border-radius:8px;
+    padding:44px 40px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .modal .illus{width:96px;height:96px;margin:0 auto 26px;border-radius:8px;
+    background:radial-gradient(120% 120% at 30% 20%,#5a1410,#140404);
+    display:flex;align-items:center;justify-content:center}
+  .modal .illus .pin{width:18px;height:18px;border-radius:50% 50% 50% 0;background:var(--red);transform:rotate(-45deg)}
+  .modal h2{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.02em;margin-bottom:14px}
+  .modal p{color:var(--mute);font-size:15px;line-height:1.6;margin-bottom:30px}
+  .btn{display:flex;align-items:center;justify-content:center;height:48px;padding:0 28px;
+    border-radius:4px;font-family:var(--display);font-weight:600;font-size:15px;
+    background:var(--red);color:#fff;border:none;width:100%}
+  .modal .skip{display:inline-block;margin-top:18px;color:var(--mute);font-size:13px;
+    text-decoration:underline;text-underline-offset:3px;background:none;border:none}
+
+  /* ---------- MAP layout ---------- */
+  .split{display:grid;grid-template-columns:430px 1fr;height:calc(100vh - 72px)}
+  .panel{background:var(--ink);border-right:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden}
+  .ptop{padding:24px 24px 20px;border-bottom:1px solid var(--line)}
+  .psearch{height:44px;background:var(--ink-3);border:1px solid var(--line);border-radius:3px;
+    display:flex;align-items:center;gap:11px;padding:0 14px;margin-bottom:16px}
+  .psearch:focus-within{border-color:var(--red)}
+  .psearch .ico{color:var(--mute)}
+  .psearch input{flex:1;background:none;border:none;outline:none;color:var(--white);font-size:14px;font-family:var(--body)}
+  .psearch input::placeholder{color:var(--mute)}
+  .filters{display:flex;gap:8px}
+  .filters select{flex:1;height:38px;background:var(--ink-2);border:1px solid var(--line);
+    border-radius:3px;padding:0 10px;font-size:13px;color:var(--white);font-family:var(--body);
+    outline:none;appearance:none;cursor:pointer}
+  .filters select:focus{border-color:var(--red)}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .chip{font-family:var(--mono);font-size:12px;padding:6px 12px;border-radius:20px;
+    background:var(--red-soft);border:1px solid var(--red);color:var(--red);display:flex;gap:6px;align-items:center}
+  .chip button{background:none;border:none;color:var(--red);font-size:13px;line-height:1}
+  .results-count{font-family:var(--mono);font-size:13px;color:var(--mute);padding:16px 24px 12px}
+  .results-count b{color:var(--white)}
+  .reslist{flex:1;overflow-y:auto;padding:0 24px 24px;display:grid;grid-auto-rows:max-content;gap:12px}
+  .res{display:grid;grid-template-columns:84px 1fr;gap:14px;background:var(--ink-2);
+    border:1px solid var(--line);border-radius:4px;overflow:hidden;height:84px;cursor:pointer;transition:border-color .12s}
+  .res:hover,.res.hot{border-color:var(--red)}
+  .res .photo{height:100%}
+  .res .rb{padding:14px 14px 0 0;min-width:0}
+  .res h4{font-family:var(--display);font-weight:600;font-size:15px;margin-bottom:6px;
+    letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .res .rmeta{font-family:var(--mono);font-size:11px;color:var(--mute);display:flex;gap:8px}
+  .res .rmeta .t{color:var(--red)}
+  .empty{padding:40px 24px;color:var(--mute);font-size:14px;line-height:1.6}
+
+  .map{position:relative;background:#c6c9cb;overflow:hidden}
+  .map svg{position:absolute;inset:0;width:100%;height:100%}
+  .map .pinhit{cursor:pointer}
+  .vignette{position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(20,20,20,0) 55%,rgba(20,20,20,.78) 100%)}
+  .legend{position:absolute;right:18px;bottom:18px;background:rgba(26,26,26,.92);
+    border:1px solid var(--line);border-radius:4px;padding:12px 14px;font-size:11px;display:grid;gap:7px}
+  .legend .row{display:flex;align-items:center;gap:8px;color:var(--mute)}
+  .legend .dot{width:9px;height:9px;border-radius:50%}
+
+  /* ---------- FICHA ---------- */
+  .crumb{padding:18px 48px;font-family:var(--mono);font-size:13px;color:var(--mute);
+    border-bottom:1px solid var(--line);display:flex;gap:8px;align-items:center}
+  .crumb button{background:none;border:none;color:var(--red);font-family:var(--mono);font-size:13px}
+  .ficha{display:grid;grid-template-columns:45% 55%}
+  .fleft{padding:40px;border-right:1px solid var(--line)}
+  .fmain{height:440px;border-radius:4px;overflow:hidden;margin-bottom:14px}
+  .thumbs{display:flex;gap:10px;margin-bottom:14px}
+  .thumbs .photo{width:96px;height:72px;border-radius:3px;flex:none;cursor:pointer}
+  .thumbs .photo.sel{outline:2px solid var(--red);outline-offset:-2px}
+  .credit{font-family:var(--mono);font-size:11px;color:var(--mute-2)}
+  .fright{padding:40px}
+  .fright h1{font-family:var(--display);font-weight:800;font-size:40px;letter-spacing:-.02em;line-height:1.05;margin-bottom:14px}
+  .dates{font-family:var(--mono);font-size:17px;color:var(--mute);margin-bottom:18px}
+  .dates .y{color:var(--white)}
+  .badges{display:flex;gap:10px;margin-bottom:26px}
+  .badge{font-family:var(--mono);font-size:12px;padding:6px 13px;border-radius:3px;border:1px solid var(--line-2);color:var(--white)}
+  .badge.red{border-color:var(--red);color:var(--red);background:var(--red-soft)}
+  .fdesc{color:#cfcfcf;font-size:15px;line-height:1.72;margin-bottom:30px;max-width:560px}
+  .data{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);
+    border-radius:4px;overflow:hidden;margin-bottom:26px}
+  .data .cell{padding:18px 20px;border-right:1px solid var(--line)}
+  .data .cell:last-child{border-right:none}
+  .data .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+  .data .v{font-family:var(--display);font-weight:700;font-size:20px}
+  .minimap{height:200px;border-radius:4px;overflow:hidden;position:relative;border:1px solid var(--line)}
+  .related{border-top:1px solid var(--line);padding:48px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .grid-4 .card .photo{height:150px}
+  .grid-4 .card h3{font-size:16px}
+  ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:6px}
+</style>
+
+<!-- NAVBAR -->
+<div class="nav">
+  <div class="logo" onclick="go('home')"><span class="mark"></span>Archivo&nbsp;<span class="vis">Visual</span></div>
+  <div class="navsearch">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    <input id="navq" placeholder="Buscar mural, autor, comuna…" oninput="onNavSearch(this.value)">
+  </div>
+  <nav class="nav-links">
+    <button id="lk-home" onclick="go('home')">Inicio</button>
+    <button id="lk-map" onclick="go('map')">Mapa</button>
+  </nav>
+</div>
+
+<!-- ===== HOME ===== -->
+<section class="view" id="view-home">
+  <div class="hero" onclick="openFicha('matapacos')">
+    <div class="photo"></div><div class="grad"></div>
+    <div class="inner">
+      <div class="eyebrow">Registro de la semana</div>
+      <h1 id="hero-title"></h1>
+      <div class="meta" id="hero-meta"></div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="sec-head"><h2>Destacados de la semana</h2><span class="count">03 registros</span></div>
+    <div class="grid-3" id="home-feat"></div>
+  </div>
+  <div class="section" style="padding-top:0">
+    <div class="sec-head"><h2>Un día como hoy</h2><span class="count">18 de octubre</span></div>
+    <div class="wide" onclick="openFicha('evade')">
+      <div class="photo" data-k="2"><span class="ph-ico">REGISTRO CIVIL</span></div>
+      <div class="wbody">
+        <div class="eyebrow">18 · Octubre · 2019</div>
+        <h3>"Evade" en la estación</h3>
+        <p>Registro ciudadano de la consigna que recorrió el Metro durante las primeras jornadas del estallido. Capturada y subida por usuarios de la plataforma esa misma noche.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="logo"><span class="mark"></span>Archivo&nbsp;<span class="vis">Visual</span></div>
+    <div class="fl"><a>Acerca de</a><a>Contacto</a><a>© 2026</a></div>
+  </div>
+</section>
+
+<!-- ===== MAP / SEARCH (same view) ===== -->
+<section class="view" id="view-map">
+  <div class="split">
+    <div class="panel">
+      <div class="ptop">
+        <div class="psearch">
+          <svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input id="mapq" placeholder="Filtrar registros…" oninput="applyFilters()">
+        </div>
+        <div class="filters">
+          <select id="f-year" onchange="applyFilters()">
+            <option value="">Año</option><option>2024</option><option>2021</option><option>2020</option><option>2019</option>
+          </select>
+          <select id="f-com" onchange="applyFilters()">
+            <option value="">Comuna</option><option>Santiago</option><option>Providencia</option><option>Recoleta</option><option>Valparaíso</option>
+          </select>
+          <select id="f-type" onchange="applyFilters()">
+            <option value="">Tipo</option><option>Mural</option><option>Graffiti</option><option>Stencil</option><option>Intervención</option><option>Manifestación</option>
+          </select>
+        </div>
+        <div class="chips" id="chips"></div>
+      </div>
+      <div class="results-count" id="rcount"></div>
+      <div class="reslist" id="reslist"></div>
+    </div>
+    <div class="map" id="map-main">
+      <div class="vignette"></div>
+      <div class="legend">
+        <div class="row"><span class="dot" style="background:#E12B1E"></span>Graffiti / Mural</div>
+        <div class="row"><span class="dot" style="background:#5BA6C9"></span>Manifestación</div>
+        <div class="row"><span class="dot" style="background:#E8A33D"></span>Intervención</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FICHA ===== -->
+<section class="view" id="view-ficha">
+  <div class="crumb"><button onclick="go('map')">← Volver al mapa</button><span>/</span><span id="crumb-t"></span></div>
+  <div class="ficha">
+    <div class="fleft">
+      <div class="fmain photo" id="f-main"><span class="ph-ico">IMAGEN PRINCIPAL</span></div>
+      <div class="thumbs" id="f-thumbs"></div>
+      <div class="credit" id="f-credit"></div>
+    </div>
+    <div class="fright">
+      <h1 id="f-title"></h1>
+      <div class="dates" id="f-dates"></div>
+      <div class="badges" id="f-badges"></div>
+      <p class="fdesc" id="f-desc"></p>
+      <div class="data" id="f-data"></div>
+      <div class="minimap map" id="map-mini"><div class="vignette"></div></div>
+    </div>
+  </div>
+  <div class="related">
+    <div class="sec-head"><h2>Registros relacionados</h2><span class="count" id="rel-count"></span></div>
+    <div class="grid-4" id="f-related"></div>
+  </div>
+</section>
+
+<!-- ONBOARDING -->
+<div class="overlay" id="onboard">
+  <div class="modal">
+    <div class="illus"><span class="pin"></span></div>
+    <h2>¿Qué es Archivo Visual?</h2>
+    <p>Un archivo abierto de arte urbano, graffiti y registros ciudadanos de fenómenos sociales. Explora el mapa, filtra por comuna o año y descubre qué capturó la gente en cada lugar.</p>
+    <button class="btn" onclick="closeOnboard('map')">Explorar el mapa</button>
+    <button class="skip" onclick="closeOnboard()">Saltar</button>
+  </div>
+</div>
+
+<script>
+/* ---------------- DATA ---------------- */
+var CAT = {Mural:'#E12B1E',Graffiti:'#E12B1E',Stencil:'#E12B1E',Intervención:'#E8A33D',Manifestación:'#5BA6C9'};
+var DB = [
+  {id:'matapacos',t:'El Negro Matapacos',cat:'Mural',com:'Santiago',y:2019,x:.40,yy:.34,k:1,n:1,
+   author:'@registro.callejero', credit:'Captura ciudadana · Plaza Baquedano, nov 2019',
+   desc:'Mural dedicado al perro quiltro que acompañó las marchas estudiantiles y se volvió símbolo de la protesta. El registro reúne fotografías subidas por transeúntes antes de que el muro fuera intervenido nuevamente.'},
+  {id:'evade',t:'"Evade"',cat:'Intervención',com:'Santiago',y:2019,x:.52,yy:.22,k:3,n:2,
+   author:'@metro.testigo', credit:'Captura ciudadana · estación subterránea, oct 2019',
+   desc:'Consigna escrita y rayada en muros y torniquetes durante las evasiones masivas que abrieron el estallido social. Documentada por usuarios la misma semana.'},
+  {id:'lastesis',t:'Un violador en tu camino',cat:'Manifestación',com:'Santiago',y:2019,x:.46,yy:.60,k:2,n:3,
+   author:'@plaza.dignidad', credit:'Registro civil · frontis institucional, dic 2019',
+   desc:'Performance colectiva registrada por cientos de asistentes. El archivo agrupa fotos y fragmentos de video aportados por la comunidad.'},
+  {id:'inti',t:'Mural de los pájaros',cat:'Mural',com:'Valparaíso',y:2018,x:.74,yy:.30,k:1,n:1,
+   author:'@cerros.valpo', credit:'Fotografía ciudadana · cerro Concepción',
+   desc:'Gran mural de fachada en los cerros porteños, fotografiado por vecinos y turistas. Uno de los registros con más versiones en distintos años.'},
+  {id:'stencilojo',t:'Ojo que ve',cat:'Stencil',com:'Providencia',y:2020,x:.66,yy:.55,k:1,n:1,
+   author:'@stencil.cl', credit:'Captura ciudadana · muro de avenida, 2020',
+   desc:'Stencil repetido en distintos puntos de la ciudad en alusión a las lesiones oculares durante las manifestaciones. El archivo mapea sus apariciones.'},
+  {id:'kiltro',t:'Kiltros del barrio',cat:'Graffiti',com:'Recoleta',y:2021,x:.30,yy:.70,k:3,n:1,
+   author:'@barrio.norte', credit:'Fotografía ciudadana · pasaje, 2021',
+   desc:'Graffiti de gran formato con perros del barrio, registrado por vecinos que documentan el muralismo comunitario de la zona.'},
+  {id:'primeralinea',t:'Primera línea',cat:'Manifestación',com:'Santiago',y:2019,x:.50,yy:.48,k:2,n:4,
+   author:'@civil.lente', credit:'Registro civil · Alameda, 2019',
+   desc:'Serie de fotografías tomadas por manifestantes y transeúntes durante las jornadas de protesta. Material documental de acceso abierto.'},
+  {id:'mosaico',t:'Mosaico de la resistencia',cat:'Intervención',com:'Providencia',y:2020,x:.60,yy:.40,k:3,n:1,
+   author:'@intervenciones', credit:'Captura ciudadana · paseo peatonal',
+   desc:'Intervención colectiva con baldosas y carteles, fotografiada por la comunidad a lo largo de varias semanas.'}
+];
+
+/* ---------------- MAP SVG ---------------- */
+function mapSVG(records, dimRest, mini){
+  var s='<svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">';
+  s+='<rect width="800" height="600" fill="#c6c9cb"/>';
+  s+='<rect x="80" y="360" width="150" height="120" fill="#b9c4ba" rx="4"/>';
+  s+='<rect x="560" y="80" width="170" height="110" fill="#b9c4ba" rx="4"/>';
+  s+='<path d="M0 470 Q 200 440 420 480 T 800 460 L800 600 L0 600 Z" fill="#b3c2c9"/>';
+  var g='<g stroke="#e9ebec" fill="none">';
+  for(var x=40;x<800;x+=70){g+='<line x1="'+x+'" y1="0" x2="'+(x-30)+'" y2="600" stroke-width="'+(x%140===40?7:3)+'"/>';}
+  for(var y=50;y<600;y+=64){g+='<line x1="0" y1="'+y+'" x2="800" y2="'+(y+18)+'" stroke-width="'+(y%128===50?7:3)+'"/>';}
+  g+='</g>';s+=g;
+  s+='<line x1="-20" y1="120" x2="820" y2="420" stroke="#dfe2e3" stroke-width="11"/>';
+  // signature red routes
+  s+='<g stroke="#E12B1E" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="'+(mini?0:.9)+'">';
+  s+='<path d="M150 330 q 30 -60 -10 -95"/><path d="M360 360 q 40 80 -20 130"/><path d="M520 130 q 50 60 0 120"/></g>';
+  // pins
+  for(var i=0;i<records.length;i++){
+    var r=records[i], px=r.x*800, py=r.yy*600, col=CAT[r.cat]||'#E12B1E';
+    s+='<g class="pinhit" opacity="1" onclick="openFicha(\''+r.id+'\')">';
+    s+='<ellipse cx="'+px+'" cy="'+(py+3)+'" rx="9" ry="3" fill="rgba(0,0,0,.25)"/>';
+    s+='<path d="M'+px+' '+(py-22)+' a 11 11 0 1 1 0.01 0 Z" fill="'+col+'"/>';
+    s+='<path d="M'+(px-7)+' '+(py-14)+' L'+px+' '+py+' L'+(px+7)+' '+(py-14)+' Z" fill="'+col+'"/>';
+    s+='<circle cx="'+px+'" cy="'+(py-22)+'" r="4" fill="#1A1A1A"/></g>';
+  }
+  if(dimRest){
+    for(var j=0;j<dimRest.length;j++){var r2=dimRest[j],qx=r2.x*800,qy=r2.yy*600;
+      s+='<g opacity="0.3"><path d="M'+qx+' '+(qy-20)+' a 10 10 0 1 1 0.01 0 Z" fill="#777"/>'+
+        '<path d="M'+(qx-6)+' '+(qy-13)+' L'+qx+' '+qy+' L'+(qx+6)+' '+(qy-13)+' Z" fill="#777"/></g>';}
+  }
+  s+='</svg>';return s;
+}
+
+/* ---------------- RENDER ---------------- */
+function go(view){
+  ['home','map','ficha'].forEach(function(v){
+    document.getElementById('view-'+v).classList.toggle('show', v===view);
+  });
+  document.getElementById('lk-home').classList.toggle('on',view==='home');
+  document.getElementById('lk-map').classList.toggle('on',view==='map'||view==='ficha');
+  if(view==='map') applyFilters();
+  window.scrollTo(0,0);
+}
+function closeOnboard(then){ document.getElementById('onboard').classList.add('hide'); if(then) go(then); }
+
+function photoTag(k,label){return '<div class="photo" data-k="'+(k||1)+'">'+(label?'<span class="ph-ico">'+label+'</span>':'')+'</div>';}
+
+function cardHTML(r){return '<div class="card" onclick="openFicha(\''+r.id+'\')">'+photoTag(r.k)+
+  '<div class="body"><h3>'+r.t+'</h3><div class="cmeta"><span>'+r.y+'</span><span>·</span>'+
+  '<span class="tag">'+r.cat+'</span></div></div></div>';}
+
+/* HOME */
+function renderHome(){
+  var hero=DB[0];
+  document.getElementById('hero-title').textContent=hero.t;
+  document.getElementById('hero-meta').innerHTML='<span>'+hero.y+'</span><span class="sep">·</span><span>'+hero.com+'</span><span class="sep">·</span><span>'+hero.cat+'</span>';
+  document.getElementById('home-feat').innerHTML=[DB[3],DB[4],DB[5]].map(cardHTML).join('');
+}
+
+/* MAP filtering */
+function activeChips(){
+  var c=[]; var q=document.getElementById('mapq').value.trim();
+  var y=document.getElementById('f-year').value, com=document.getElementById('f-com').value, ty=document.getElementById('f-type').value;
+  if(q) c.push(['q','“'+q+'”']);
+  if(y) c.push(['f-year',y]); if(com) c.push(['f-com',com]); if(ty) c.push(['f-type',ty]);
+  return c;
+}
+function clearChip(kind){
+  if(kind==='q'){document.getElementById('mapq').value='';}
+  else document.getElementById(kind).value='';
+  applyFilters();
+}
+function applyFilters(){
+  var q=document.getElementById('mapq').value.trim().toLowerCase();
+  var y=document.getElementById('f-year').value, com=document.getElementById('f-com').value, ty=document.getElementById('f-type').value;
+  var match=[], rest=[];
+  DB.forEach(function(r){
+    var ok=true;
+    if(q && !(r.t.toLowerCase().indexOf(q)>=0 || r.author.toLowerCase().indexOf(q)>=0 || r.com.toLowerCase().indexOf(q)>=0 || r.cat.toLowerCase().indexOf(q)>=0)) ok=false;
+    if(y && String(r.y)!==y) ok=false;
+    if(com && r.com!==com) ok=false;
+    if(ty && r.cat!==ty) ok=false;
+    (ok?match:rest).push(r);
+  });
+  var filtering = q||y||com||ty;
+  // chips
+  var chips=activeChips();
+  document.getElementById('chips').innerHTML=chips.map(function(c){
+    return '<span class="chip">'+c[1]+'<button onclick="clearChip(\''+c[0]+'\')">✕</button></span>';}).join('');
+  // count
+  document.getElementById('rcount').innerHTML='<b>'+match.length+'</b> registro'+(match.length===1?'':'s')+' encontrado'+(match.length===1?'':'s');
+  // list
+  var rl=document.getElementById('reslist');
+  if(match.length===0){rl.innerHTML='<div class="empty">Sin coincidencias. Prueba quitar un filtro o buscar otra comuna.</div>';}
+  else rl.innerHTML=match.map(function(r){
+    return '<div class="res" onclick="openFicha(\''+r.id+'\')">'+photoTag(r.k)+
+      '<div class="rb"><h4>'+r.t+'</h4><div class="rmeta"><span>'+r.y+'</span><span>·</span>'+
+      '<span class="t">'+r.cat+'</span><span>·</span><span>'+r.com+'</span></div></div></div>';
+  }).join('');
+  // map
+  var el=document.getElementById('map-main');
+  var keep=el.querySelector('.vignette'), leg=el.querySelector('.legend');
+  el.querySelectorAll('svg').forEach(function(n){n.remove()});
+  el.insertAdjacentHTML('afterbegin', mapSVG(match, filtering?rest:null, false));
+}
+
+/* FICHA */
+function openFicha(id){
+  var r=DB.filter(function(d){return d.id===id})[0]; if(!r) return;
+  document.getElementById('crumb-t').textContent=r.t;
+  document.getElementById('f-title').textContent=r.t;
+  document.getElementById('f-main').setAttribute('data-k',r.k);
+  document.getElementById('f-dates').innerHTML='<span class="y">'+r.y+'</span> · registro abierto';
+  document.getElementById('f-badges').innerHTML='<span class="badge red">'+r.cat+'</span><span class="badge">'+r.com+'</span>';
+  document.getElementById('f-desc').textContent=r.desc;
+  document.getElementById('f-credit').textContent=r.credit;
+  document.getElementById('f-data').innerHTML=
+    '<div class="cell"><div class="k">Tipo</div><div class="v">'+r.cat+'</div></div>'+
+    '<div class="cell"><div class="k">Comuna</div><div class="v">'+r.com+'</div></div>'+
+    '<div class="cell"><div class="k">Capturas</div><div class="v">'+(r.n*3+2)+'</div></div>';
+  // thumbs
+  var th='';for(var i=0;i<5;i++){th+='<div class="photo'+(i===0?' sel':'')+'" data-k="'+r.k+'" onclick="selThumb(this)"></div>';}
+  document.getElementById('f-thumbs').innerHTML=th;
+  // minimap
+  var mm=document.getElementById('map-mini');
+  mm.querySelectorAll('svg').forEach(function(n){n.remove()});
+  mm.insertAdjacentHTML('afterbegin', mapSVG([r],null,true));
+  // related: same cat or comuna
+  var rel=DB.filter(function(d){return d.id!==r.id && (d.cat===r.cat||d.com===r.com)}).slice(0,4);
+  if(rel.length<4) rel=rel.concat(DB.filter(function(d){return d.id!==r.id && rel.indexOf(d)<0})).slice(0,4);
+  document.getElementById('rel-count').textContent=rel.length+' registros';
+  document.getElementById('f-related').innerHTML=rel.map(cardHTML).join('');
+  go('ficha');
+}
+function selThumb(el){el.parentNode.querySelectorAll('.photo').forEach(function(n){n.classList.remove('sel')});el.classList.add('sel');}
+
+/* nav search → jump to map */
+function onNavSearch(v){
+  document.getElementById('view-map').classList.contains('show')||go('map');
+  document.getElementById('mapq').value=v; applyFilters();
+}
+
+/* init */
+renderHome();
+applyFilters();
+go('home');   // mostrar Home detrás del modal de onboarding
+</script>
